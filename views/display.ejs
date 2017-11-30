@@ -1,0 +1,28 @@
+<HTML>
+<BODY>
+<head>
+<title><%= r.name %></title>
+</head>
+<% if(r.image!=null){ %>
+<img src="data:<%= r.mimetype %>;base64, <%= r.image %>" style="width:50%;height:auto">
+<% } %>
+<H2><%= r.name %></H2>
+<p>Borough: <%= r.borough %></p>
+<p>Cuisine: <%= r.cuisine %></p>
+<p>Street: <%= r.address.street %></p>
+<p>Building: <%= r.address.building %></p>
+<p>Zipcode: <%= r.address.zipcode %></p>
+<p>Rating:<ol><% r.grades.forEach(function(rating){%><li><%=rating.score%>(<%=rating.user%>)</li><%});%></ol>
+<p>GPS: [<%= r.address.lat %>,<%= r.address.lon %> ]</p>
+<p>Created by: <%= r.owner %></p>
+
+<% if((r.address.lat!=null) || (r.address.lon!=null)){ %>
+<p><a href="/map?lat=<%= r.address.lat%>&lon=<%= r.address.lon%>">Google Map</a></p>
+<% } %>
+<a href=/rate?id=<%= r._id %>><button>Rate</button></a>
+<a href=/remove?id=<%= r._id %>><button>Delete</button></a> 
+<a href=/edit?id=<%= r._id %>><button>Edit</button></a>
+<a href="#" onclick="history.back()"><button>Go Home</button></a>
+
+</BODY>
+</HTML>

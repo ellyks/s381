@@ -1,0 +1,20 @@
+{
+    "name": "server",
+    "description": "Project",
+    "author": "Elly Wu, Isabella Chan",
+    "version": "0.0.1",
+    "dependencies": {
+        "body-parser": "^1.18.2",
+        "cookie-session": "*",
+        "ejs": "*",
+        "exif": "^0.6.0",
+        "express": "*",
+        "express-fileupload": "^0.3.0",
+        "fs": "0.0.1-security",
+        "mongodb": "^2.2.33"
+    },
+    "engine": "node >= 0.10.0",
+    "scripts": {
+        "start": "node server"
+    }
+}

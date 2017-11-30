@@ -1,0 +1,19 @@
+<HTML>
+<BODY>
+<H1>Modify Restaurant</H1>
+
+<form action='/edit?id=<%=r._id%>' method='POST' enctype="multipart/form-data">
+  Name: <input type='text' name='name' value="<%=r.name%>" required><br>
+  Borough: <input type='text' name='borough' value="<%=r.borough%>"><br>
+  Cuisine: <input type='text' name='cuisine' value="<%=r.cuisine%>"><br>
+  Street: <input type='text' name='street' value="<%=r.address.street%>"><br>
+  Building: <input type='text' name='building' value="<%=r.address.building%>"><br>
+  Zipcode: <input type='number' name='zipcode' value="<%=r.address.zipcode%>"><br>
+  GPS Coordinates (lon.): <input type='text' name='lon' value="<%=r.address.lon%>"><br>
+  GPS Coordinates (lat.): <input type='text' name='lat' value="<%=r.address.lat%>"><br>
+  Photo: <input name="photo" type="file"><br>
+  <input type='submit' value='Edit' />
+  
+</form>
+</BODY>
+</HTML>
