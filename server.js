@@ -243,6 +243,35 @@ app.get('/search', function(req,res) {
 	});
 });
 
+app.get('/searching',function(req,res) {
+	MongoClient.connect(mongourl,function(err,db) {
+	if (err) throw err;
+	
+	console.log(req.query);
+	
+	var criteria = {};
+	if(req.query.name!="")
+    criteria['name'] = req.query.name;
+
+	if(req.query.borough!="")
+    criteria['borough'] = req.query.borough;
+
+	if(req.query.cuisine!="")
+    criteria['cuisine'] = req.query.cuisine;
+
+	console.log(criteria);
+	
+	findRestaurants(db,criteria,function(restaurants) {
+			db.close();
+			if(restaurants.length==0){
+				res.end('No result');
+			}
+			else{
+			res.render('result',{r: restaurants});}
+		});
+});
+});
+
 
 function insertRestaurant(db,r,callback) {
 	db.collection('restaurants').insertOne(r,function(err,result) {
@@ -349,24 +378,18 @@ function updateRestaurant(db,criteria,newValues,callback) {
 	});
 }
 
-/*function findName(db,callback) {
-	db.collection('restaurants').distinct("name", function(err,result) {
-		console.log(result);
-		callback(result);
-	});
-}*/
-
-/*function findBorough(db,callback) {
-	db.collection('restaurants').distinct("borough", function(err,result) {
-		console.log(result);
-		callback(result);
+function findRestaurants(db,criteria,callback) {
+	var restaurants = [];
+	cursor = db.collection('restaurants').find(criteria,{image:0}); 		
+	cursor.each(function(err, doc) {
+		assert.equal(err, null); 
+		if (doc != null) {
+			restaurants.push(doc);
+		} else {
+			callback(restaurants); 
+		}
 	});
 }
 
-function findCuisine(db,callback) {
-	db.collection('restaurants').distinct("cuisine", function(err,result) {
-		console.log(result);
-		callback(result);
-	});
-}*/
+
 app.listen(process.env.PORT || 8099);
