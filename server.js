@@ -216,7 +216,7 @@ app.post("/edit", function(req,res) {
 
 
 app.get('/map', function(req,res) {
-  res.render('map.ejs',
+  res.render('map',
              {lat:req.query.lat,lon:req.query.lon});
 });
 
