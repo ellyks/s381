@@ -1,0 +1,12 @@
+<html>
+<body>
+<h1>Result:</h1>
+
+<ol>
+	<% r.forEach(function(restaurants) { %>
+	<li><a href=/display?id=<%= restaurants._id %>><%= restaurants.name %></a></li>
+<% });   %>
+</ol>
+  
+</body>
+</html>
