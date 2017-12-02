@@ -2,28 +2,13 @@
 <body>
 <form action="/searching" method='get'>
 
-Name:<select name="name">
-		<option value="" ></option>
-		<% n.forEach(function(n) { %>	
-				<option value=""+n>  <%=n%></option>
-			<% });%>
-		</select>
+Name:<input type='text' name='name'><br>
 <br>	
 <br>
-Borough:<select name="borough">
-		<option value="" ></option>
-		<% b.forEach(function(b) { %>
-				<option value=""+ b> <%=b%></option>
-			<% });%>
-		</select>
+Borough:<input type='text' name='borough'><br>
 <br>
 <br>
-Cuisine:<select name="cuisine">
-		<option value="" ></option>
-		<% c.forEach(function(c) { %>
-				<option value=""+c> <%=c%></option>
-			<% });%>
-		</select>
+Cuisine:<input type='text' name='cuisine'><br>
 <br>
 <br>
 <input type="submit" value="Search"/>
