@@ -220,6 +220,25 @@ app.get('/map', function(req,res) {
              {lat:req.query.lat,lon:req.query.lon});
 });
 
+app.get("/api/restaurant/read", function(req,res) {
+	MongoClient.connect(mongourl, function(err, db) {
+		assert.equal(err,null);
+		console.log('Connected to MongoDB\n');
+		var criteria = {};
+		for (key in req.query) {
+				criteria[key] = req.query[key];
+			}
+		findRestaurants(db,criteria,function(restaurants) {
+			db.close();
+			console.log(req.session.username);
+			if(restaurants.length==0){
+				res.end('{}');
+			}
+			res.end(JSON.stringify(restaurants));
+		});
+	});
+});
+
 app.get('/search', function(req,res) {
 	MongoClient.connect(mongourl,function(err,db) {
 	if (err) throw err;
