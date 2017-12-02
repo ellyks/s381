@@ -250,14 +250,15 @@ app.get('/searching',function(req,res) {
 	console.log(req.query);
 	
 	var criteria = {};
-	if(req.query.name!="")
+	if(req.query.name)
     criteria['name'] = req.query.name;
 
-	if(req.query.borough!="")
+	if(req.query.borough)
     criteria['borough'] = req.query.borough;
 
-	if(req.query.cuisine!="")
+	if(req.query.cuisine)
     criteria['cuisine'] = req.query.cuisine;
+
 
 	console.log(criteria);
 	
