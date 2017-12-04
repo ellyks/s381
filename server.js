@@ -222,13 +222,13 @@ app.get('/map', function(req,res) {
              {lat:req.query.lat,lon:req.query.lon});
 });
 
-app.get("/api/restaurant/read", function(req,res) {
+app.get("/api/restaurant/read/:a/:b", function(req,res) {
 	MongoClient.connect(mongourl, function(err, db) {
 		assert.equal(err,null);
 		console.log('Connected to MongoDB\n');
 		var criteria = {};
-		for (key in req.query) {
-				criteria[key] = req.query[key];
+		for (key in req.params) {
+				criteria[req.params.a] = req.params.b;
 			}
 		findRestaurants(db,criteria,function(restaurants) {
 			db.close();
