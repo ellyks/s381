@@ -19,7 +19,8 @@ var db;
 var users = new Array(
 	{name: 'demo', password: ''},
 	{name: 'demo2', password: ''},
-	{name: 'raymondso', password: ''}
+	{name: 'raymondso', password: ''},
+	{name:'student',password:''}
 	);
 
 app.set('view engine','ejs');
