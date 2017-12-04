@@ -226,10 +226,8 @@ app.get("/api/restaurant/read/:a/:b", function(req,res) {
 	MongoClient.connect(mongourl, function(err, db) {
 		assert.equal(err,null);
 		console.log('Connected to MongoDB\n');
-		var criteria = {};
-		for (key in req.params) {
-				criteria[req.params.a] = req.params.b;
-			}
+		var criteria = {};	
+		criteria[req.params.a] = req.params.b;		
 		findRestaurants(db,criteria,function(restaurants) {
 			db.close();
 			console.log(req.session.username);
