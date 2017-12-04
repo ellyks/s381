@@ -12,16 +12,14 @@ var mongourl = 'mongodb://project:project381@ds137054.mlab.com:37054/s381f';
 
 
 app = express();
-app.set('view engine','ejs');
-
+app.set('view engine','ejs');..
 var SECRETKEY1 = 'I want to pass COMPS381F';
 var SECRETKEY2 = 'Keep this to yourself';
 var db;
 var users = new Array(
 	{name: 'demo', password: ''},
 	{name: 'demo2', password: ''},
-	{name: 'raymondso', password: ''},
-	{name: 'student', password: ''}
+	{name: 'raymondso', password: ''}
 	);
 
 app.set('view engine','ejs');
@@ -181,7 +179,7 @@ app.post('/rate',function(req,res) {
 		db.collection('restaurants').updateOne(criteria,{$push:{grades:{$each:[new_rate]}}},function(err) {
     if (err) throw err;
     console.log("Rated");
-		res.redirect('/');							
+		res.redirect('/display?id=<%= req.query.id %>');							
 	});
 	});
 });
