@@ -12,7 +12,7 @@ var mongourl = 'mongodb://project:project381@ds137054.mlab.com:37054/s381f';
 
 
 app = express();
-app.set('view engine','ejs');..
+app.set('view engine','ejs');
 var SECRETKEY1 = 'I want to pass COMPS381F';
 var SECRETKEY2 = 'Keep this to yourself';
 var db;
