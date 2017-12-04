@@ -179,7 +179,7 @@ app.post('/rate',function(req,res) {
 		db.collection('restaurants').updateOne(criteria,{$push:{grades:{$each:[new_rate]}}},function(err) {
     if (err) throw err;
     console.log("Rated");
-		res.redirect('/display?id=<%= req.query.id %>');							
+		res.redirect('/display?id='+req.query.id);							
 	});
 	});
 });
