@@ -3,7 +3,7 @@
 <head>
 <title><%= r.name %></title>
 </head>
-<% if(r.mimetype=="image/jpeg){ %>
+<% if(r.mimetype=="image/jpeg"){ %>
 <img src="data:<%= r.mimetype %>;base64, <%= r.image %>" style="width:50%;height:auto">
 <% } %>
 <H2><%= r.name %></H2>
