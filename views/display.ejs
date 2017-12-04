@@ -3,7 +3,7 @@
 <head>
 <title><%= r.name %></title>
 </head>
-<% if(r.image!=null){ %>
+<% if(r.mimetype=="image/jpeg){ %>
 <img src="data:<%= r.mimetype %>;base64, <%= r.image %>" style="width:50%;height:auto">
 <% } %>
 <H2><%= r.name %></H2>
@@ -23,6 +23,7 @@
 <a href=/remove?id=<%= r._id %>><button>Delete</button></a> 
 <a href=/edit?id=<%= r._id %>><button>Edit</button></a>
 <a href="#" onclick="history.back()"><button>Go Home</button></a>
+
 
 </BODY>
 </HTML>
