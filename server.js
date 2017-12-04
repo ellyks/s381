@@ -67,6 +67,9 @@ app.post('/new', function(req,res) {
 		
 });
 
+app.post('/api/restaurant/create',function(req,res){
+	create(req,res,req.body);
+});
 
 app.post('/login',function(req,res) {
 	for (var i=0; i<users.length; i++) {
